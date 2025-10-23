@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { HelpCircle, ArrowLeft, ArrowRight } from 'lucide-react';
+import rect1 from '../assets/Rectangle 5160.png';
+import rect2 from '../assets/Rectangle 5160.png';
+import rect3 from '../assets/Rectangle 5160.png';
+import rect4 from '../assets/Rectangle 5160.png';
 
-const initialImages = [
-  'src/assets/Rectangle 5160.png',
-  'src/assets/Rectangle 5160.png',
-  'src/assets/Rectangle 5160.png',
-  'src/assets/Rectangle 5160.png',
- 
-];
+const initialImages = [rect1, rect2, rect3, rect4];
+
 
 function GalleryWidget() {
   const [images, setImages] = useState(initialImages);
