@@ -12,10 +12,14 @@ function App() {
     <div className="hidden lg:block lg:w-1/2" />
     
     {/* Right half - widgets */}
-    <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
+    <div className="w-full lg:w-1/2 mr-25 p-6 lg:p-12 ">
       <div className="w-full max-w-[520px] space-y-6">
         <About />
+        <div className='h-[4px] ml-20 w-full bg-gray-600 rounded shadow-[2px_2px_5px_rgba(0,0,0.8,0.8)]' />
+
         <Gallery />
+        <div className='h-[4px] ml-20 w-full bg-gray-600 rounded shadow-[2px_2px_5px_rgba(0,0,0.8,0.8)]' />
+
       </div>
     </div>
   </div>
