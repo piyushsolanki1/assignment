@@ -46,7 +46,7 @@ function GalleryWidget() {
 
   return (
     <div className="bg-[#363c43] rounded-[18px] shadow-[5px_5px_10px_rgba(0,0,0,0.4)] w-[720px] p-6">
-      {/* Header */}
+
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-gray-400" />
@@ -88,7 +88,6 @@ function GalleryWidget() {
       
         </div>
 
-      {/* Images Grid */}
       <div className="flex gap-4 justify-center mb-4">
         {visibleImages.map((image, index) => (
           <div

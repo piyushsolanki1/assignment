@@ -15,7 +15,7 @@ const About = () => {
       <div className="flex items-center gap-2 px-6 pt-4 pb-4">
         <HelpCircle className="w-5 h-5 text-gray-400" />
         <div className="relative flex gap-1 bg-[#171717] rounded-[18px] p-1 w-full">
-          {/* Sliding highlight */}
+
           <div
             className="absolute top-0 left-0 h-full w-[33.33%] bg-[#28292f] rounded-[14px] transition-all duration-300 ease-in-out"
             style={{
@@ -23,7 +23,6 @@ const About = () => {
             }}
           ></div>
 
-          {/* Buttons */}
           {tabs.map((tab) => (
           <button
           key={tab.id}
@@ -31,8 +30,8 @@ const About = () => {
           className={`relative z-10 px-6 py-2 w-full text-center rounded-[14px] 
                       text-white text-opacity-80 transition-colors duration-300 ease-in-out
                       ${activeTab === tab.id 
-                        ? ' text-opacity-100 shadow-md'  // active button
-                        : 'hover:bg-gray-800 hover:text-opacity-100 ' // inactive buttons
+                        ? ' text-opacity-100 shadow-md' 
+                        : 'hover:bg-gray-800 hover:text-opacity-100 '
                       }`}
         >
           {tab.label}
