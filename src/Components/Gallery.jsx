@@ -7,11 +7,12 @@ import rect4 from '../assets/Rectangle 5160.png';
 
 const initialImages = [rect1, rect2, rect3, rect4];
 
-
 function GalleryWidget() {
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imagesPerPage = 3;
+  const imageWidth = 190; // width of each image
+  const gap = 30; // space between images
 
   const handleAddImage = () => {
     const input = document.createElement('input');
@@ -40,19 +41,18 @@ function GalleryWidget() {
     setCurrentIndex(Math.min(images.length - imagesPerPage, currentIndex + 1));
   };
 
-  const visibleImages = images.slice(currentIndex, currentIndex + imagesPerPage);
   const canGoBack = currentIndex > 0;
   const canGoForward = currentIndex < images.length - imagesPerPage;
 
   return (
     <div className="bg-[#363c43] rounded-[18px] shadow-[5px_5px_10px_rgba(0,0,0,0.4)] w-[720px] p-6">
-
+      {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-gray-400" />
         </div>
-        <div className='w-[149px] h-[62px] bg-[#171717] text-white justify-center flex items-center rounded-2xl mr-60'>          
-            <p className="font-poppins font-bold">Gallery</p>
+        <div className="w-[149px] h-[62px] bg-[#171717] text-white justify-center flex items-center rounded-2xl mr-60">
+          <p className="font-poppins font-bold">Gallery</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -85,26 +85,29 @@ function GalleryWidget() {
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
-      
-        </div>
+      </div>
 
-      <div className="flex gap-4 justify-center mb-4">
-        {visibleImages.map((image, index) => (
-          <div
-          key={currentIndex + index}
-          className="w-[190px] h-[179px] rounded-[18px] overflow-hidden 
-                     bg-[#2d3139] transform transition-all duration-300  
-                     perspective-origin-top-right
-                     hover:scale-105 hover:rotate-2 hover:shadow-[5px_5px_15px_rgba(0,0,0,0.5)]"
+      {/* Sliding Images */}
+      <div className="overflow-hidden h-50 grid grid-cols-2 items-center justify-center ml-5">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * (imageWidth + gap)}px)` }}
         >
-          <img
-            src={image}
-            alt={`Gallery image ${currentIndex + index + 1}`}
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-          />
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 mr-[30px] w-[190px] h-[179px]"
+            >
+              <div className="w-full h-full rounded-[18px] overflow-visible">
+                <img
+                  src={image}
+                  alt={`Gallery image ${index + 1}`}
+                  className="w-full h-full object-cover rounded-[18px] transform transition-all duration-300 hover:scale-105 hover:rotate-2 hover:shadow-[5px_5px_15px_rgba(0,0,0,0.5)]"
+                />
+              </div>
+            </div>
+          ))}
         </div>
-        
-        ))}
       </div>
     </div>
   );
